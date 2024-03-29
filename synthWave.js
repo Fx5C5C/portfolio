@@ -7,7 +7,7 @@ import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPa
 
 let scene, camera, renderer, sun, grid1, grid2, gridDistance, stars;
 let font, textStrings = ["David Dahncke", "Freelancer", "Software Engineer", "Coach", "Consultant", "AI Creative", "C++", "Python", "Kotlin", "Java", "Swift", "C#", "Mobile", "Desktop", "Web"], currentTextIndex = 0, textMeshes = [];
-let lightStreaks = [], streakCount = 250, streakLength = 50;
+let lightStreaks = [], streakCount = 150, streakLength = 75;
 let mouseX = 0, mouseY = 0, windowHalfX = window.innerWidth / 2, windowHalfY = window.innerHeight / 2;
 let arrow, textColor = 0xff00ff, neonMaterial;
 let composer, renderPass, unrealBloomPass;
@@ -18,8 +18,8 @@ function initPostProcessing() {
     composer.addPass(renderPass);
 
     unrealBloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.5, 0.4, 0.85);
-    unrealBloomPass.threshold = 0.21;
-    unrealBloomPass.strength = 1.5; // Bloom strength. The glow amount
+    unrealBloomPass.threshold = 0.021;
+    unrealBloomPass.strength = 1.25; // Bloom strength. The glow amount
     unrealBloomPass.radius = 0.55; // Glow radius
 
     composer.addPass(unrealBloomPass);
@@ -41,14 +41,14 @@ function init() {
     document.getElementById("threejs-canvas").appendChild(renderer.domElement);
     initPostProcessing();
 
-    gridDistance = 300;
+    gridDistance = 600;
      // Initialize the first grid
-     grid1 = createBentGrid(300, 50);
-     grid1.position.set(0, -1, -150);
+     grid1 = createBentGrid(600, 50);
+     grid1.position.set(0, -1, -300);
  
      // Initialize the second grid, positioned right at the end of the first grid
-     grid2 = createBentGrid(300, 50);
-     grid2.position.set(0, -1, -150 - gridDistance);
+     grid2 = createBentGrid(600, 50);
+     grid2.position.set(0, -1, -300 - gridDistance);
 
      createLightStreak();
 
@@ -72,7 +72,7 @@ function init() {
     });
 
     const glowSprite = new THREE.Sprite(glowMaterial);
-    glowSprite.scale.set(240, 240, 1); // Adjust size to match the sun's glow effect you desire
+    glowSprite.scale.set(100, 100, 1); // Adjust size to match the sun's glow effect you desire
 
     const sunMaterial = new THREE.ShaderMaterial({
         vertexShader: `
@@ -150,7 +150,7 @@ function init() {
 }
 
 function createBentGrid(size, divisions) {
-    const gridGeometry = new THREE.PlaneGeometry(size, size, divisions, divisions);
+    const gridGeometry = new THREE.PlaneGeometry(size, size * 2, divisions, divisions);
     gridGeometry.rotateX(-Math.PI / 2); // Orient the grid horizontally
 
     // Access the position attribute of the geometry
@@ -162,7 +162,7 @@ function createBentGrid(size, divisions) {
         const x = positions.getX(i);
         // Adjust the formula to ensure the bend is downwards towards the edges
         const normalizedX = Math.abs(x) / sizeHalf; // Normalized distance from center
-        const bendAmount = Math.pow(normalizedX, 2) * 12; // Quadratic curve for smoother transition
+        const bendAmount = Math.pow(normalizedX, 4) * 12; // Quadratic curve for smoother transition
 
         // Apply the bend amount, ensuring it's only applied downwards
         const y = positions.getY(i) + bendAmount;
@@ -388,7 +388,7 @@ function resetStreak(streak, initial) {
     
     streak.position.x = Math.cos(angle) * distance;
     streak.position.y = Math.sin(angle) * distance;
-    streak.position.z = -distance + (initial ? Math.random() * 500 : 0); // Offset on z-axis
+    streak.position.z = -(distance * 2) + (initial ? Math.random() * 500 : 0); // Offset on z-axis
 }
 
 function updateLightStreaks() {
