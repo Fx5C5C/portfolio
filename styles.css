@@ -1,0 +1,23 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#threejs-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+}
+
+#content {
+    position: relative;
+    z-index: 10;
+    background-color: rgba(0,0,0,0.9); /* Semi-transparent background */
+    color: white;
+    padding: 20px;
+    margin-top: 100vh; /* Start the content after the full viewport height */
+}
