@@ -1,0 +1,69 @@
+.content {
+    padding: 0 20px 0 20px;
+    margin-top: 25px;
+}
+
+.icons,
+.biography {
+    width: 100vw;
+    max-width: 600px;
+}
+
+.icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    flex-wrap: wrap;
+    gap: 20%; 
+    margin-bottom: 20px;
+}
+
+a {
+    color: #ff51c8;
+    text-decoration: none;
+}
+
+.icons a:hover {
+    color: #ff51c855;
+    text-decoration: underline;
+}
+
+.icons a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1px;
+    bottom: -6px;
+    left: 0;
+    background-color: #ff51c8;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+  
+  .icons a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+.biography {
+    align-items: center;
+    text-align: justify;
+    gap: 10px;
+}
+
+.biography span {
+    display: inline;
+}
+
+@media (max-width: 768px) {
+    .content {
+        padding: 10px;
+    }
+    .icons,
+    .biography {
+        max-width: 90%;
+    }
+}

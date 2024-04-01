@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "esm": "^3.2.25",
+    "geolocation": "^0.0.0",
+    "lucide": "^0.363.0",
     "three": "^0.162.0"
   },
   "devDependencies": {

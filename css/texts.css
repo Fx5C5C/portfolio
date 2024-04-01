@@ -1,0 +1,11 @@
+body, html {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    color: #444444;
+    font-size: 14pt;
+    font-variant: small-caps;
+}
+
+.character {
+    opacity: 0;
+    transition: opacity 1s ease;
+}

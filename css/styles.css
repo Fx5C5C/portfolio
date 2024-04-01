@@ -1,0 +1,90 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#threejs-canvas { 
+    width: 100%; height: 100vh; 
+}
+
+section { 
+    width: 100vw; 
+}
+
+.content { 
+    height: 100vh; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    flex-direction: column;
+}
+
+.scroll-container {
+    height: 100%;
+    overflow-y: scroll;
+    padding-right: 20px;
+    box-sizing: content-box;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+.scroll-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Opera */
+}
+
+hr {
+    width: 100vw;
+    max-width: 600px;
+    margin: 20px 20px;
+    height: 1px;
+    border-width: 0;
+    background-color:#ff51c8;
+}
+
+@media (max-width: 768px) {
+    hr {
+        max-width: 90%;
+    }
+}
+
+#imprintContainer {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    font-size: 9pt;
+}
+
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1001;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 5%;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+    cursor: pointer;
+}
