@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "build": "vite build"
+  },  
   "dependencies": {
     "esm": "^3.2.25",
     "geolocation": "^0.0.0",

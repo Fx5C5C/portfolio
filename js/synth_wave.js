@@ -394,6 +394,11 @@ function onDocumentMouseMove(event) {
     mouseY = (event.clientY - windowHalfY) / 800;
 }
 
+function onDeviceOrientation(event) {
+    mouseX = (event.gamma) / 300; 
+    mouseY = (event.beta - 90) / 240;
+}
+
 function onWindowResize() {
     windowHalfX = window.innerWidth / 2;
     windowHalfY = window.innerHeight / 2;
@@ -419,6 +424,7 @@ function onMouseClick(e) {
 }
 
 document.addEventListener('mousemove', onDocumentMouseMove, false);
+window.addEventListener('deviceorientation', onDeviceOrientation, false);
 window.addEventListener('resize', onWindowResize, false);
 window.addEventListener('click', onMouseClick, false);
 
